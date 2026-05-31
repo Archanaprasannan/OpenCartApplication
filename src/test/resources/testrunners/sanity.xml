@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--only importatnt test/functioanlities included for execution: SANITY TESTING-->
+<!--N number of xml can be written inside a single project based upon our requirement-->
+<suite name="Opencart App Test Suite" verbose="4" thread-count="4"
+	parallel="tests">
+<!--if you dont want to add the @Listener in the base test class, you can add it in the xml file as well.so that it will get activated from the xml file-->
+	<listeners>
+		<listener
+			class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
+			<listener
+			class-name="com.qa.automation.opencart.listener.TestAllureListener" />
+	</listeners>
+	
+	
+	<test name="Login Page Test_chrome">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.qa.automation.opencart.test.LoginPageTest" />
+		</classes>
+	</test>
+
+
+	<!--<test name="Register Page Test_chrome">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.qa.automation.opencart.test.RegisterPageTest" />
+		</classes>
+	</test>
+
+
+	<test name="Account Page Test_chrome">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.qa.automation.opencart.test.AccountPageTest" />
+		</classes>
+	</test>-->
+
+
+</suite>	
