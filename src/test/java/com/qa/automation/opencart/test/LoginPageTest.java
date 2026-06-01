@@ -23,9 +23,9 @@ import io.qameta.allure.Story;
  * LoginPage class. It will extend the BaseTest class which will contain the
  * common setup and teardown methods for all the test classes.
  */
-@Feature("Feature 10: Login page features for open cart application")
-@Epic("EPIC 10: login page features for open cart application")
-@Story("US 101: Implement login page test cases for open cart application")
+@Feature("Feature 1: Login page features for open cart application")
+@Epic("EPIC 100: login page features for open cart application")
+@Story("US 100.1: Implement login page test cases for open cart application")
 public class LoginPageTest extends BaseTest {
 	@Description("verify the login page header")
 	@Owner("Archana")

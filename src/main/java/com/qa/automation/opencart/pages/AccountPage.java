@@ -1,7 +1,8 @@
 package com.qa.automation.opencart.pages;
 
-import static com.qa.automation.opencart.constants.AppConstants.*;
-
+import static com.qa.automation.opencart.constants.AppConstants.ACCOUNTPAGE_FRACTION_URL;
+import static com.qa.automation.opencart.constants.AppConstants.ACCOUNT_PAGE_TITLE;
+import static com.qa.automation.opencart.constants.AppConstants.DEFAULT_TIMEOUT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +10,10 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import com.qa.automation.opencart.utils.ElementUtil;
+
+import io.qameta.allure.Step;
 
 public class AccountPage {
 	private WebDriver driver;
@@ -28,19 +30,20 @@ public class AccountPage {
 	}
 
 	// public methods/actions of login page
+	@Step("Getting the account page title")
 	public String getAccountPageTitle() {
 		String accountpageTitle = eleUtil.waitForTitleIs(DEFAULT_TIMEOUT, ACCOUNT_PAGE_TITLE);
 		System.out.println("Account page title :" + accountpageTitle);
 		return accountpageTitle;
 	}
-	
+	@Step("Getting the account page URL")
 	public String getAccountPageUrl() {
 		String url = eleUtil.waitForURLContains(DEFAULT_TIMEOUT, ACCOUNTPAGE_FRACTION_URL);
 		System.out.println("Account Page URL is: " + url);
 		return url;
 		
 	}
-
+	@Step("Getting the account page headers")
 	public List<String> getAccountPageHeaders() {
 		List<WebElement> header = eleUtil.getElements(headers);
 		List<String> hearderList = new ArrayList<String>();
@@ -53,7 +56,7 @@ public class AccountPage {
 		return hearderList;
 		
 	}
-
+	@Step("Searching the product: {0}")
 	public SearchResultPage doSearch(String productName) {
 		System.out.println("Searching the product: " + productName);
 		eleUtil.doSendkeys(searchButton, productName);

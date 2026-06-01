@@ -1,10 +1,13 @@
 package com.qa.automation.opencart.pages;
 
+import static com.qa.automation.opencart.constants.AppConstants.DEFAULT_TIMEOUT;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import static com.qa.automation.opencart.constants.AppConstants.*;
 
 import com.qa.automation.opencart.utils.ElementUtil;
+
+import io.qameta.allure.Step;
 
 public class ProductInfoPage {
 	private WebDriver driver;
@@ -21,13 +24,13 @@ public class ProductInfoPage {
 	}
 
 	// public methods/actions of login page
-	
+	@Step("Getting the product header")
 	public String getProductHeader() {
 		String header = eleUtil.waitForElementVisible(productheader,DEFAULT_TIMEOUT).getText();
 		System.out.println("Product header is: " + header);
 		return header;
 	}	
-	
+	@Step("Getting the product images count")
 	public int getProductImagesCount() {
 		int count = eleUtil.waitForAllElementsVisible(productimages, DEFAULT_TIMEOUT).size();
 		System.out.println("Total product images count is: " + count);

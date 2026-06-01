@@ -1,13 +1,16 @@
 package com.qa.automation.opencart.pages;
 
+import static com.qa.automation.opencart.constants.AppConstants.DEFAULT_TIMEOUT;
+import static com.qa.automation.opencart.constants.AppConstants.MEDIUM_TIMEOUT;
+import static com.qa.automation.opencart.constants.AppConstants.REGISTERPAGE_TITLE;
+import static com.qa.automation.opencart.utils.StringUtil.getRandomEmailId;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.automation.opencart.utils.ElementUtil;
-import com.qa.automation.opencart.utils.StringUtil;
 
-import static com.qa.automation.opencart.constants.AppConstants.*;
-import static com.qa.automation.opencart.utils.StringUtil.*;
+import io.qameta.allure.Step;
 
 public class RegisterPage {
 
@@ -39,12 +42,13 @@ public class RegisterPage {
 	}
 
 	// public methods/actions of login page
+	@Step("Getting the register page title")
 	public String getRegisterPageTitle() {
 		String title = eleUtil.waitForTitleIs(DEFAULT_TIMEOUT, REGISTERPAGE_TITLE);
 		System.out.println("Register Page Title is: " + title);
 		return title;
 	}
-
+	@Step("Registering a new user with details: {0}, {1}, {2}, {3}, {4}")
 	public String doUserRegistration(String firstname, String lastname,  String telephone, String password,
 			String subscribe) {
 		eleUtil.waitForElementVisible(this.firstname, DEFAULT_TIMEOUT).sendKeys(firstname);

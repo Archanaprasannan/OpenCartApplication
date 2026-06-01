@@ -44,11 +44,11 @@ public class ElementUtil {
 	public WebElement getElement(String locatorType, String locatorValue) {
 		return driver.findElement(getBy(locatorType, locatorValue));
 	}
-
+	@Step("finding the element using {0} and timeout: {1}")
 	public WebElement getElement(By locator, int timeOut) {
 		return waitForElementVisible(locator, timeOut);
 	}
-
+	@Step("locating the element using {0}, value: {1} and timeout: {2}")
 	public By getBy(String locatorType, String locatorValue) {
 		By locator = null;
 		switch (locatorType.toUpperCase()) {
@@ -83,7 +83,7 @@ public class ElementUtil {
 		}
 		return locator;
 	}
-
+	
 	private void nullCheck(CharSequence... value) {
 		if (value == null) {
 			throw new RuntimeException("=====VALUE CANNOT BE NULL=====");
@@ -118,7 +118,7 @@ public class ElementUtil {
 		getElement(locatorType, locatorValue).sendKeys(value);
 	}
 
-//@Step("clicking on element using: {0} ")
+	//@Step("clicking on element using: {0} ")
 	public void doClick(By locator) {
 		getElement(locator).click();
 	}
@@ -133,7 +133,7 @@ public class ElementUtil {
 		System.out.println(text);
 		return text;
 	}
-
+	@Step("fetching the element DOM attribute value using locator and Attribute: {0} {1} ")
 	public String getElementDomAttributeValue(By locator, String attribute) {
 		nullCheck(attribute);
 		return getElement(locator).getDomAttribute(attribute);
